@@ -3,11 +3,9 @@ import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
-import service from "./utils/https";
 
 Vue.config.productionTip = false;
-
-Vue.prototype.$https = service;
+// 全局变量
 Vue.prototype.$message = Message;
 
 new Vue({

@@ -1,4 +1,5 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import chalk from "chalk";
 import { Message } from "element-ui";
 
 // 响应接口
@@ -29,7 +30,8 @@ service.interceptors.request.use(
   },
   (error: any) => {
     // Do something with request error
-    console.error("error:", error); // for debug
+    console.log("\n");
+    chalk.bold.red(console.error("error:", error)); // for debug
     Promise.reject(error);
   },
 );
