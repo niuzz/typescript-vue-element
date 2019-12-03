@@ -20,13 +20,13 @@ paths:
           required: true
           description: The user name for login.
           schema:
-            $ref: '#/components/schemas/User/properties/username'
+            $ref: "#/components/schemas/User/properties/username"
         - name: password
           in: query
           required: true
           description: The password for login in clear text.
           schema:
-            $ref: '#/components/schemas/User/properties/password'
+            $ref: "#/components/schemas/User/properties/password"
       responses:
         200:
           description: OK
@@ -56,7 +56,7 @@ paths:
                         type: string
                         example: admin-token
         400:
-          $ref: '#/components/responses/InvalidUser'
+          $ref: "#/components/responses/InvalidUser"
   /users/info:
     post:
       tags:
@@ -81,9 +81,9 @@ paths:
                     type: object
                     properties:
                       user:
-                        $ref: '#/components/schemas/User'
+                        $ref: "#/components/schemas/User"
         401:
-          $ref: '#/components/responses/Unauthorized'
+          $ref: "#/components/responses/Unauthorized"
 components:
   schemas:
     User:
@@ -116,7 +116,7 @@ components:
         roles:
           type: array
           items:
-            $ref: '#/components/schemas/Role/properties/key'
+            $ref: "#/components/schemas/Role/properties/key"
       required:
         - id
         - username
@@ -135,7 +135,7 @@ components:
           type: string
           example: Super Administrator. Have access to view all pages.
         routes:
-          $ref: '#/components/schemas/AnyValue'
+          $ref: "#/components/schemas/AnyValue"
       required:
         - key
         - name
@@ -157,11 +157,10 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Error'
+            $ref: "#/components/schemas/Error"
     Unauthorized:
       description: Unauthorized
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Error'
-     
+            $ref: "#/components/schemas/Error"

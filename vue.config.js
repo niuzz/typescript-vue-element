@@ -69,8 +69,7 @@ module.exports = {
       // 设置代理
       // proxy all requests starting with /api to jsonplaceholder
       "/api": {
-        target:
-          "https://easy-mock.com/mock/5de24d898f1dc0598860f9df/articles-mock",
+        target: "http://localhost:5000",
         changeOrigin: true,
         ws: true,
         pathRewrite: {

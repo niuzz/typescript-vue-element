@@ -13,16 +13,14 @@ import { login } from "@/api/users";
 })
 export default class extends Vue {
   mounted() {
-    console.log("hello");
     this.Login();
   }
 
   private async Login() {
     const data = await login({
-      username: "admin",
-      password: "111",
+      username: "editor",
+      password: "123456",
     });
-    console.log(data);
   }
 }
 </script>
