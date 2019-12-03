@@ -6,7 +6,7 @@ const userList: IUserData[] = [
   {
     id: 0,
     username: "admin",
-    password: "any",
+    password: "123456",
     name: "Super Admin",
     avatar:
       "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif",

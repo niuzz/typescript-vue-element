@@ -10,7 +10,7 @@ import * as api from "./api";
 import { accessTokenAuth } from "./security";
 
 const app = express();
-const port = 9528;
+const port = 5000;
 const { connector, summarise } = require("swagger-routes-express");
 
 // Compression
@@ -36,7 +36,7 @@ app.use((req, res, next) => {
 });
 
 // Read and swagger config file
-const apiDefinition = yaml.load(path.resolve(__dirname, "swagger.yml"));
+const apiDefinition = yaml.load(path.resolve(__dirname, "openapi.yaml"));
 // Create mock functions based on swaggerConfig
 const options = {
   security: {
@@ -47,7 +47,7 @@ const connectSwagger = connector(api, apiDefinition, options);
 connectSwagger(app);
 // Print swagger router api summary
 const apiSummary = summarise(apiDefinition);
-console.log(apiSummary);
+// console.log(apiSummary);
 
 // Catch 404 error
 app.use((req, res, next) => {
