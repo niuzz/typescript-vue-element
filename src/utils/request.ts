@@ -41,8 +41,10 @@ service.interceptors.response.use(
   (res: AxiosResponse) => {
     // Some example codes here:
     // code == 0: success
+
     if (res.status === 200) {
       const data: ResponseData = res.data;
+      console.log(data);
       if (data.code === 0) {
         return data.data;
       } else {

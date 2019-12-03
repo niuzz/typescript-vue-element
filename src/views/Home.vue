@@ -18,7 +18,7 @@ export default class extends Vue {
   }
 
   private async Login() {
-    const { data } = await login({
+    const data = await login({
       username: "admin",
       password: "111",
     });

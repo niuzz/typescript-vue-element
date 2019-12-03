@@ -2,7 +2,7 @@
  * 解析搜索参数为对象
  * @param url url 地址
  */
-export function param2Obj(url: string): object {
+export const param2Obj = function(url: string): object {
   const search = url.split("?")[1];
   if (!search) {
     return {};
@@ -15,4 +15,8 @@ export function param2Obj(url: string): object {
         .replace(/=/g, '":"') +
       '"}',
   );
-}
+};
+
+export default {
+  param2Obj,
+};
