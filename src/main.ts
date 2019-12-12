@@ -4,15 +4,19 @@ import Element from "element-ui";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
+import i18n from "@/locales";
 import "element-ui/lib/theme-chalk/index.css";
 
 Vue.config.productionTip = false;
 // 全局变量
 Vue.prototype.$message = Message;
-Vue.use(Element);
+Vue.use(Element, {
+  i18n: (key: string, value: string) => i18n.t(key, value),
+});
 
 new Vue({
   router,
   store,
+  i18n,
   render: h => h(App),
 }).$mount("#app");
