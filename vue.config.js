@@ -10,7 +10,8 @@ module.exports = {
   lintOnSave: false,
   // webpack配置
   // see https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md
-  chainWebpack: () => {},
+  chainWebpack: () => {
+  },
   configureWebpack: config => {
     if (process.env.NODE_ENV === "production") {
       // 为生产环境修改配置...
@@ -50,7 +51,7 @@ module.exports = {
     // css预设器配置项
     loaderOptions: {},
     // 启用 CSS modules for all css / pre-processor files.
-    requireModuleExtension: false,
+    requireModuleExtension: true,
   },
   // use thread-loader for babel & TS in production build
   // enabled by default if the machine has more than 1 cores
@@ -67,9 +68,8 @@ module.exports = {
     hotOnly: false,
     proxy: {
       // 设置代理
-      // proxy all requests starting with /api to jsonplaceholder
       "/api": {
-        target: "http://localhost:5000",
+        target: "http://www.sosoapi.com/pass/mock/16905/",
         changeOrigin: true,
         ws: true,
         pathRewrite: {
@@ -77,10 +77,17 @@ module.exports = {
         },
       },
     },
-    before: app => {},
+    before: app => {
+    },
   },
   // 第三方插件配置
   pluginOptions: {
-    // ...
+    "style-resources-loader": {
+      preProcessor: "less",
+      patterns: [
+        path.resolve(__dirname, "./src/less/_variables.less"),
+        path.resolve(__dirname, "./src/_mixins.less"),
+      ],
+    },
   },
 };

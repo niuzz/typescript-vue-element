@@ -16,7 +16,6 @@ export default class extends Vue {
   @Watch("$route", { immediate: true })
   onRouteChange(to: string, from: string) {
     AppModule.ToggleDevice(DeviceType.Mobile);
-    console.log(to, from);
   }
 
   beforeMount() {
