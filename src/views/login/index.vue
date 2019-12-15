@@ -14,19 +14,17 @@
         </h3>
       </div>
       <el-form-item prop="username">
-        <el-input placeholder="姓名" v-model="loginForm.username"></el-input>
+        <el-input placeholder="姓名" v-model="loginForm.username"/>
       </el-form-item>
       <el-form-item prop="password">
-        <el-input placeholder="密码" v-model="loginForm.password"></el-input>
+        <el-input placeholder="密码" v-model="loginForm.password"/>
       </el-form-item>
       <el-form-item class="login-button-group">
-        <el-button @click="handleReset" type="warning"> {{
-          $t("login.reset")
-          }}
+        <el-button @click="handleReset" type="warning">
+          {{ $t("login.reset") }}
         </el-button>
-        <el-button @click="handleSubmit" type="primary">{{
-          $t("login.login")
-          }}
+        <el-button @click="handleSubmit" type="primary" :loading="loading">
+          {{ $t("login.login") }}
         </el-button>
       </el-form-item>
     </el-form>
@@ -65,6 +63,7 @@ export default class extends Vue {
     username: [{ validator: this.validateUsername, trigger: "blur" }],
     password: [{ validator: this.validatePassword, trigger: "blur" }],
   };
+  private loading = false;
   private redirect?: string;
   private otherQuery: Dictionary<string> = {};
 
@@ -72,6 +71,7 @@ export default class extends Vue {
     const el: any = this.$refs.loginForm;
     el.validate(async (valid: boolean) => {
       if (valid) {
+        this.loading = true;
         await UserModule.Login({
           username: this.loginForm.username,
           password: this.loginForm.password,
@@ -80,6 +80,7 @@ export default class extends Vue {
           path: this.redirect || "/",
           query: this.otherQuery,
         });
+        this.loading = false;
       } else {
         return false;
       }
@@ -100,6 +101,7 @@ export default class extends Vue {
   padding: 10px;
   overflow: hidden;
   background-color: @loginBg;
+
   .login-form {
     position: relative;
     width: 520px;
@@ -124,6 +126,7 @@ export default class extends Vue {
       display: inline-block;
       width: 85%;
       height: 47px;
+
       input {
         height: 47px;
         background: transparent;

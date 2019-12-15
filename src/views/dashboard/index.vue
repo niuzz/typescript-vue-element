@@ -1,21 +1,36 @@
 <template>
-  <div class="dashboard-container">
-    <h1>dashboard</h1>
+  <div>
+    <component :is="currentRole"/>
   </div>
 </template>
 
 <script lang="ts">
-import { Vue } from "vue-property-decorator";
+import { Component, Vue } from "vue-property-decorator";
+import AdminDashboard from "./admin/index.vue";
+import EditorDashboard from "./editor/index.vue";
+
+@Component({
+  name: "Dashboard",
+  components: {
+    AdminDashboard,
+    EditorDashboard,
+  },
+})
 export default class extends Vue {
-  mounted() {
-    console.log("dashboard");
+  private currentRole = "admin-dashboard";
+
+  get roles() {
+    return "admin";
+  }
+
+  created() {
+    if (!this.roles.includes("admin")) {
+      this.currentRole = "editor-dashboard";
+    }
   }
 }
 </script>
 
 <style lang="less">
-.dashboard-container {
-  background: "#333";
-  text-align: "center";
-}
+
 </style>

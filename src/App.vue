@@ -6,5 +6,4 @@
 
 <style lang="less">
 @import "./less/index.less";
-@import "./less/_variables";
 </style>
