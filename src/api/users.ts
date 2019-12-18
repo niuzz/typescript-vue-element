@@ -6,3 +6,11 @@ export const loginApi = (data: any) =>
     method: "post",
     data,
   });
+
+export const getUserInfo = (data: any) => {
+  request({
+    url: "/users/info",
+    method: "post",
+    data,
+  });
+};

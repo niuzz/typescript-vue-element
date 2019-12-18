@@ -1,21 +1,86 @@
 <template>
-  <div></div>
+  <div :class="className" :style="{ height: height, width: width }"></div>
 </template>
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
-import echarts from "echarts";
+import echarts, { EChartOption } from "echarts";
+
+const animationDuration = 6000;
+
 @Component({
   name: "bar-chart",
 })
 export default class extends Vue {
-  @Prop({ default: "chart"}) private className!: string;
-  @Prop({ default: "100%"}) private width!: string;
-  @Prop({ default: "300px"}) private height!: string;
+  @Prop({ default: "chart" }) private className!: string;
+  @Prop({ default: "100%" }) private width!: string;
+  @Prop({ default: "300px" }) private height!: string;
 
-  private chart =
+  private chart!: echarts.ECharts;
+
+  mounted() {
+    this.initChart();
+  }
+
   private initChart() {
-    this.chart
+    this.chart = echarts.init(this.$el as HTMLDivElement, "macarons");
+    this.chart.setOption({
+      tooltip: {
+        trigger: "axis",
+        axisPointer: {
+          type: "shadow",
+        },
+      },
+      grid: {
+        top: 10,
+        left: "2%",
+        right: "2%",
+        bottom: "3%",
+        containLabel: true,
+      },
+      xAxis: [
+        {
+          type: "category",
+          data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+          axisTick: {
+            alignWithLabel: true,
+          },
+        },
+      ],
+      yAxis: [
+        {
+          type: "value",
+          axisTick: {
+            show: false,
+          },
+        },
+      ],
+      series: [
+        {
+          name: "pageA",
+          type: "bar",
+          stack: "vistors",
+          // barWidth: '60%',
+          data: [79, 52, 200, 334, 390, 330, 220],
+          animationDuration,
+        },
+        {
+          name: "pageB",
+          type: "bar",
+          stack: "vistors",
+          // barWidth: '60%',
+          data: [80, 52, 200, 334, 390, 330, 220],
+          animationDuration,
+        },
+        {
+          name: "pageC",
+          type: "bar",
+          stack: "vistors",
+          // barWidth: '60%',
+          data: [30, 52, 200, 334, 390, 330, 220],
+          animationDuration,
+        },
+      ],
+    } as EChartOption<EChartOption.SeriesBar>);
   }
 }
 </script>
-<style lang="less"></style>

@@ -6,6 +6,11 @@
       <line-chart :chart-data="lineChartData" />
     </el-row>
     <el-row :gutter="30">
+      <el-col :xs="24" :sm="24" :lg="8">
+        <div class="chart-wrapper">
+          <bar-chart />
+        </div>
+      </el-col>
       <el-col :sm="24" :xs="24" :lg="8">
         <div class="chart-wrapper">
           <pie-chart />
@@ -25,6 +30,7 @@ import PanelGroup from "./components/PanelGroup.vue";
 import LineChart, { ILineChartData } from "./components/LineChart.vue";
 import PieChart from "./components/PieChart.vue";
 import RadarChart from "./components/RadarChart.vue";
+import BarChart from "./components/BarChart.vue";
 
 const lineChartData: { [type: string]: ILineChartData } = {
   newVisitis: {
@@ -52,6 +58,7 @@ const lineChartData: { [type: string]: ILineChartData } = {
     LineChart,
     PieChart,
     RadarChart,
+    BarChart,
   },
 })
 export default class extends Vue {
