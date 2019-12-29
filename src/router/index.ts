@@ -1,10 +1,10 @@
 import Vue from "vue";
-import VueRouter from "vue-router";
+import VueRouter, { RouteConfig } from "vue-router";
 import Layout from "@/layout/index.vue";
 
 Vue.use(VueRouter);
 
-const routes = [
+export const constantRoutes: RouteConfig[] = [
   {
     path: "/",
     component: Layout,
@@ -33,10 +33,26 @@ const routes = [
   },
 ];
 
-const router = new VueRouter({
-  mode: "history",
-  base: process.env.BASE_URL,
-  routes,
-});
+export const asyncRoutes: RouteConfig[] = [
+  {
+    path: "/permission",
+    component: Layout,
+    redirect: "/permission/directive",
+    meta: {
+      name: "permission",
+      title: "permission",
+      icon: "permission",
+    },
+  },
+];
+
+const createRouter = () =>
+  new VueRouter({
+    mode: "history",
+    base: process.env.BASE_URL,
+    routes: constantRoutes,
+  });
+
+const router = createRouter();
 
 export default router;

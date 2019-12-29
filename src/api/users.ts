@@ -7,10 +7,9 @@ export const loginApi = (data: any) =>
     data,
   });
 
-export const getUserInfo = (data: any) => {
+export const getUserInfo = (data: any) =>
   request({
     url: "/users/info",
-    method: "post",
+    method: "get",
     data,
   });
-};

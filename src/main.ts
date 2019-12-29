@@ -7,6 +7,7 @@ import router from "./router";
 import store from "./store";
 import i18n from "@/locales";
 import "element-ui/lib/theme-chalk/index.css";
+import "@/permission";
 import "@/icons/components";
 
 Vue.config.productionTip = false;

@@ -1,6 +1,6 @@
 <template>
-  <div class="wrap">
-    <router-view></router-view>
+  <div class="app-main">
+    <router-view />
   </div>
 </template>
 
@@ -10,7 +10,15 @@ export default class extends Vue {}
 </script>
 
 <style scoped lang="less">
-.wrap {
-  background-color: @darkGray;
+.app-main {
+  min-height: calc(100vh - 50px);
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.fixed-header + .app-main {
+  padding-top: 50px;
+  overflow: auto;
 }
 </style>

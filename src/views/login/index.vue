@@ -14,10 +14,10 @@
         </h3>
       </div>
       <el-form-item prop="username">
-        <el-input placeholder="姓名" v-model="loginForm.username"/>
+        <el-input placeholder="姓名" v-model="loginForm.username" />
       </el-form-item>
       <el-form-item prop="password">
-        <el-input placeholder="密码" v-model="loginForm.password"/>
+        <el-input placeholder="密码" v-model="loginForm.password" />
       </el-form-item>
       <el-form-item class="login-button-group">
         <el-button @click="handleReset" type="warning">
@@ -76,6 +76,7 @@ export default class extends Vue {
           username: this.loginForm.username,
           password: this.loginForm.password,
         });
+        this.loading = false;
         this.$router.push({
           path: this.redirect || "/",
           query: this.otherQuery,
