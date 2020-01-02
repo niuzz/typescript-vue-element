@@ -20,11 +20,26 @@ export const constantRoutes: RouteConfig[] = [
           affix: true,
         },
       },
+      {
+        path: "table",
+        component: () => import("@/views/table/index.vue"),
+        name: "Table",
+        meta: {
+          title: "table",
+          icon: "table",
+          affix: true,
+        },
+      },
     ],
   },
   {
     path: "/login",
     name: "login",
+    meta: {
+      title: "login",
+      icon: "login",
+      affix: false,
+    },
     component: () => import("../views/login/index.vue"),
   },
   {

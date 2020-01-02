@@ -22,4 +22,8 @@ export default class Hamburger extends Vue {
   vertical-align: middle;
   cursor: pointer;
 }
+
+.is-active {
+  transform: rotate(180deg);
+}
 </style>

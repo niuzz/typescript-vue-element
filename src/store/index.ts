@@ -5,7 +5,7 @@ import { IAppState } from "./modules/app";
 Vue.use(Vuex);
 
 export interface IRootStore {
-  app: IAppState;
+  appState: IAppState;
 }
 
 export default new Vuex.Store<IRootStore>({});

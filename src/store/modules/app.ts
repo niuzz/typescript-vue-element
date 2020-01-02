@@ -6,6 +6,7 @@ import {
   getModule,
 } from "vuex-module-decorators";
 import store from "@/store";
+import { setSidebarStatus } from "@/utils/cookies";
 
 export enum DeviceType {
   Mobile,
@@ -33,9 +34,25 @@ class App extends VuexModule implements IAppState {
     this.device = device;
   }
 
+  @Mutation
+  private TOGGLE_SIDEBAR(withoutAnimation: boolean) {
+    this.sidebar.opened = !this.sidebar.opened;
+    this.sidebar.withoutAnimation = withoutAnimation;
+    if (this.sidebar.opened) {
+      setSidebarStatus("opened");
+    } else {
+      setSidebarStatus("closed");
+    }
+  }
+
   @Action
   public ToggleDevice(device: DeviceType) {
     this.TOGGLE_DEVICE(device);
+  }
+
+  @Action
+  public ToggleSideBar(withoutAnimation: boolean) {
+    this.TOGGLE_SIDEBAR(withoutAnimation);
   }
 }
 

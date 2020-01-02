@@ -1,6 +1,6 @@
 <template>
   <div>
-    <component :is="currentRole"/>
+    <component :is="currentRole" />
   </div>
 </template>
 
@@ -31,6 +31,4 @@ export default class extends Vue {
 }
 </script>
 
-<style lang="less">
-
-</style>
+<style lang="less"></style>

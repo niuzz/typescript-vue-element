@@ -3,7 +3,7 @@
     <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
       <div @click="handleSetLineChartData('newVisitis')" class="card-panel">
         <div class="card-panel-icon-wrapper icon-people">
-          <svg-icon name="peoples" class="card-panel-icon"/>
+          <svg-icon name="peoples" class="card-panel-icon" />
         </div>
         <div class="card-panel-description">
           <div class="card-panel-text">
@@ -21,7 +21,7 @@
     <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
       <div @click="handleSetLineChartData('purchases')" class="card-panel">
         <div class="card-panel-icon-wrapper icon-money">
-          <svg-icon name="money" class="card-panel-icon"/>
+          <svg-icon name="money" class="card-panel-icon" />
         </div>
         <div class="card-panel-description">
           <div class="card-panel-text">
@@ -35,12 +35,11 @@
           />
         </div>
       </div>
-
     </el-col>
     <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
       <div @click="handleSetLineChartData('messages')" class="card-panel">
         <div class="card-panel-icon-wrapper icon-message">
-          <svg-icon name="message" class="card-panel-icon"/>
+          <svg-icon name="message" class="card-panel-icon" />
         </div>
         <div class="card-panel-description">
           <div class="card-panel-text">
@@ -58,7 +57,7 @@
     <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
       <div @click="handleSetLineChartData('shoppings')" class="card-panel">
         <div class="card-panel-icon-wrapper icon-shopping">
-          <svg-icon name="shopping" class="card-panel-icon"/>
+          <svg-icon name="shopping" class="card-panel-icon" />
         </div>
         <div class="card-panel-description">
           <div class="card-panel-text">
