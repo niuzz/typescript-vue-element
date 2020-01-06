@@ -5,7 +5,7 @@
       @toggleClick="toggleSidebar"
       :is-active="sidebar.opened"
     />
-    <breadcurmb class="breadcrumb-container" />
+    <breadcrumb class="breadcrumb-container" />
     <div class="right-menu">
       <!--<el-dropdown class="avatar-container right-menu-item hover-effect">
         <div class="avatar-wrapper">
@@ -23,7 +23,7 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import Hamburger from "@c/Hamburger/index.vue";
-import Breadcurmb from "@/components/Breadcrumb/index.vue";
+import Breadcrumb from "@/components/Breadcrumb/index.vue";
 import { AppModule } from "@/store/modules/app";
 import { UserModule } from "@/store/modules/user";
 
@@ -31,7 +31,7 @@ import { UserModule } from "@/store/modules/user";
   name: "Navbar",
   components: {
     Hamburger,
-    Breadcurmb,
+    Breadcrumb,
   },
 })
 export default class Navbar extends Vue {

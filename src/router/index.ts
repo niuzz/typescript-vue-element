@@ -20,44 +20,53 @@ export const constantRoutes: RouteConfig[] = [
           affix: true,
         },
       },
-      {
-        path: "table",
-        component: () => import("@/views/table/index.vue"),
-        name: "Table",
-        meta: {
-          title: "table",
-          icon: "table",
-          affix: true,
-        },
-      },
     ],
   },
   {
     path: "/login",
     name: "login",
     meta: {
-      title: "login",
-      icon: "login",
-      affix: false,
+      hidden: true,
     },
     component: () => import("../views/login/index.vue"),
   },
   {
     path: "*",
     redirect: "/",
+    meta: {
+      hidden: true,
+    },
   },
 ];
 
 export const asyncRoutes: RouteConfig[] = [
   {
-    path: "/permission",
+    path: "/table",
     component: Layout,
-    redirect: "/permission/directive",
+    redirect: "/table/complex-table",
+    name: "Table",
     meta: {
-      name: "permission",
-      title: "permission",
-      icon: "permission",
+      title: "table",
+      icon: "table",
     },
+    children: [
+      {
+        path: "draggable-table",
+        component: () => import("@/views/table/draggable-table.vue"),
+        name: "draggable-table",
+        meta: {
+          title: "draggableTable",
+        },
+      },
+      {
+        path: "complex-table",
+        component: () => import("@/views/table/complex-table.vue"),
+        name: "complex-table",
+        meta: {
+          title: "complexTable",
+        },
+      },
+    ],
   },
 ];
 

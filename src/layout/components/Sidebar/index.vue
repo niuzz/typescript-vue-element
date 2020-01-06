@@ -1,17 +1,18 @@
 <template>
   <div>
-    <sidebar-item />
+    <el-scrollbar wrap-class="scrollbar-wrapper">
+      <el-menu :collapse="isCollapse" :collapse-transition="false">
+        <sidebar-item v-for="route in routes" :key="route.path" :item="route" />
+      </el-menu>
+    </el-scrollbar>
   </div>
-  <!--<el-scrollbar wrap-class="scrollbar-wrapper">
-    hello
-    <el-menu :default-active="activeMenu"> </el-menu>
-  </el-scrollbar>-->
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import { AppModule } from "@/store/modules/app";
 import SidebarItem from "@/layout/components/Sidebar/SidebarItem.vue";
+import { PermissionModule } from "@/store/modules/permission";
 
 @Component({
   name: "Sidebar",
@@ -20,10 +21,12 @@ import SidebarItem from "@/layout/components/Sidebar/SidebarItem.vue";
   },
 })
 export default class Sidebar extends Vue {
-  private name: string = "Sidebar page";
-
   get sidebar() {
     return AppModule.sidebar;
+  }
+
+  get routes() {
+    return PermissionModule.routes;
   }
 
   get isCollapse() {
@@ -41,4 +44,24 @@ export default class Sidebar extends Vue {
 }
 </script>
 
-<style scoped></style>
+<style lang="less">
+.sidebar-container {
+  .el-scrollbar__view {
+    height: 100%;
+  }
+
+  .horizontal-collapse-transition {
+    transition: 0s width ease-in-out, 0s padding-left ease-in-out,
+      0s padding-right ease-in-out;
+  }
+}
+</style>
+<style lang="less" scoped>
+.el-scrollbar {
+  height: 100%;
+}
+
+.el-menu {
+  height: 100%;
+}
+</style>

@@ -1,6 +1,9 @@
 export default {
   route: {
     dashboard: "首页",
+    table: "表格",
+    draggableTable: "可拖动表格",
+    complexTable: "综合表格",
   },
   navBar: {
     logout: "退出",
