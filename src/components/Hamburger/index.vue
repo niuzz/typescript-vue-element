@@ -17,7 +17,7 @@ export default class Hamburger extends Vue {
   }
 }
 </script>
-<style lang="less">
+<style lang="less" scoped>
 .svg-icon {
   vertical-align: middle;
   cursor: pointer;

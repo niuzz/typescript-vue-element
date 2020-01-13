@@ -1,5 +1,5 @@
 <template>
-  <div class="app-wrapper">
+  <div :class="classObj" class="app-wrapper">
     <sidebar class="sidebar-container" />
     <div class="main-container">
       <div class="fixed-header">
@@ -17,6 +17,7 @@ import ResizeMixin from "./mixin/resize";
 import AppMain from "./components/AppMain.vue";
 import Sidebar from "./components/Sidebar/index.vue";
 import Navbar from "@/layout/components/Navbar/index.vue";
+import { AppModule } from "@/store/modules/app";
 
 @Component({
   name: "Layout",
@@ -26,7 +27,16 @@ import Navbar from "@/layout/components/Navbar/index.vue";
     Navbar,
   },
 })
-export default class extends mixins(ResizeMixin) {}
+export default class extends mixins(ResizeMixin) {
+  get classObj() {
+    return {
+      hideSidebar: !this.sidebar.opened,
+      openSidebar: this.sidebar.opened,
+      withoutAnimation: this.sidebar.withoutAnimation,
+      // mobile: this.device === DeviceType.Mobile,
+    };
+  }
+}
 </script>
 
 <style scoped lang="less">
@@ -46,14 +56,29 @@ export default class extends mixins(ResizeMixin) {}
   .main-container {
     margin-left: @sideBarWidth;
     position: relative;
+  }
+}
 
-    .fixed-header {
-      position: fixed;
-      top: 0;
-      right: 0;
-      z-index: 9;
-      width: calc(100% - @sideBarWidth);
-    }
+.fixed-header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 9;
+  width: calc(100% - @sideBarWidth);
+}
+
+.hideSidebar {
+  .main-container {
+    margin-left: 54px;
+  }
+
+  .sidebar-container {
+    width: 54px !important;
+  }
+
+  .fixed-header {
+    background: #1f2d3d;
+    width: calc(100% - 54px);
   }
 }
 </style>

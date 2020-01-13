@@ -46,24 +46,24 @@ export const asyncRoutes: RouteConfig[] = [
     redirect: "/table/complex-table",
     name: "Table",
     meta: {
-      title: "table",
+      title: "Table",
       icon: "table",
     },
     children: [
       {
         path: "draggable-table",
         component: () => import("@/views/table/draggable-table.vue"),
-        name: "draggable-table",
+        name: "DraggableTable",
         meta: {
-          title: "draggableTable",
+          title: "DraggableTable",
         },
       },
       {
         path: "complex-table",
         component: () => import("@/views/table/complex-table.vue"),
-        name: "complex-table",
+        name: "ComplexTable",
         meta: {
-          title: "complexTable",
+          title: "ComplexTable",
         },
       },
     ],
@@ -72,7 +72,7 @@ export const asyncRoutes: RouteConfig[] = [
 
 const createRouter = () =>
   new VueRouter({
-    mode: "history",
+    // mode: "history",
     base: process.env.BASE_URL,
     routes: constantRoutes,
   });

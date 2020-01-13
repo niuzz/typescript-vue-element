@@ -1,8 +1,20 @@
 <template>
   <div>
     <el-scrollbar wrap-class="scrollbar-wrapper">
-      <el-menu :collapse="isCollapse" :collapse-transition="false">
-        <sidebar-item v-for="route in routes" :key="route.path" :item="route" />
+      <el-menu
+        :default-active="activeMenu"
+        :collapse="isCollapse"
+        :unique-opened="false"
+        :collapse-transition="false"
+        mode="vertical"
+      >
+        <sidebar-item
+          v-for="route in routes"
+          :key="route.path"
+          :item="route"
+          :base-path="route.path"
+          :is-collapse="isCollapse"
+        />
       </el-menu>
     </el-scrollbar>
   </div>

@@ -6,11 +6,11 @@ import { DeviceType, AppModule } from "@/store/modules/app";
 })
 export default class extends Vue {
   get device() {
-    return "mobile";
+    return AppModule.device;
   }
 
   get sidebar() {
-    return [];
+    return AppModule.sidebar;
   }
 
   @Watch("$route", { immediate: true })

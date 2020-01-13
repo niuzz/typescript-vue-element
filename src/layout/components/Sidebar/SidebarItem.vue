@@ -8,7 +8,9 @@ import path from "path"; import path from "path";
       { 'first-level': isFirstLevel },
     ]"
   >
-    <template v-if="!alwaysShowRootMenu && theOnlyOneChild">
+    <template
+      v-if="!alwaysShowRootMenu && theOnlyOneChild && !theOnlyOneChild.children"
+    >
       <sidebar-item-link
         v-if="theOnlyOneChild.meta"
         :to="resolvePath(theOnlyOneChild.path)"
@@ -34,6 +36,9 @@ import path from "path"; import path from "path";
           v-for="child in item.children"
           :key="child.path"
           :item="child"
+          :is-collapse="isCollapse"
+          :is-first-level="false"
+          :base-path="resolvePath(child.path)"
         />
       </template>
     </el-submenu>
@@ -101,52 +106,6 @@ export default class extends Vue {
   }
 }
 </script>
-<style lang="less">
-.el-submenu.is-active > .el-submenu__title {
-  color: @subMenuActiveText !important;
-}
-
-.full-mode {
-  .nest-menu .el-submenu > .el-submenu__title,
-  .el-submenu .el-menu-item {
-    min-width: @sideBarWidth !important;
-    background-color: @subMenuBg !important;
-
-    &:hover {
-      background-color: @subMenuHover !important;
-    }
-  }
-}
-
-.simple-mode {
-  &.first-level {
-    .submenu-title-noDropdown {
-      padding: 0 !important;
-      position: relative;
-
-      .el-tooltip {
-        padding: 0 !important;
-      }
-    }
-
-    .el-submenu {
-      overflow: hidden;
-
-      & > .el-submenu__title {
-        padding: 0px !important;
-
-        .el-submenu__icon-arrow {
-          display: none;
-        }
-
-        & > span {
-          visibility: hidden;
-        }
-      }
-    }
-  }
-}
-</style>
 <style lang="less" scoped>
 .svg-icon {
   margin-right: 16px;
